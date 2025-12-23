@@ -1,6 +1,10 @@
+import User from "@/models/User";
 import { Inngest } from "inngest";
 import connectDB from "./db";
-import { User } from "@clerk/nextjs/server";
+import { currentUser } from '@clerk/nextjs/server';
+// import { User } from "@clerk/nextjs/server";
+
+
 
 //create a client to send and receive events
 export const inngest = new Inngest({id: "quickcart-next"});
@@ -27,7 +31,7 @@ export const syncUserCreation = inngest.createFunction(
 )
 
 // Inngest function to update user data to database
-export const synUserUpdation = inngest.createFunction(
+export const syncUserUpdation = inngest.createFunction(
     {
         id: 'update-user-from-clerk'
     },
